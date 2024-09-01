@@ -1,0 +1,53 @@
+﻿@model IEnumerable<User>
+
+@{
+    ViewData["Title"] = "read";
+}
+@if (Model == null)
+{
+    <p>No data available.</p>
+}
+else
+{
+
+<table class="table">
+    <thead>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Name)
+            </td>
+            
+            <td>
+                @Html.DisplayNameFor(model => model.CreatedAt)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.Name
+                    </td>
+                    
+                    <td>
+                        @item.CreatedAt
+                    </td>
+                    <td>
+                        <a asp-controller="users" asp-action="changeIsActive" asp-route-id="@item.Id" class="btn btn-outline-danger">Active</a>
+                    </td>
+                    
+                    
+                </tr>
+
+            }
+        }
+    </tbody>
+</table>
+}
+
+
